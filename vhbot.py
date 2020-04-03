@@ -11,7 +11,6 @@ import re
 from vhconstants import *
 
 #vars
-
 bot = commands.Bot(command_prefix='!')
 client = discord.Client()
 
@@ -20,7 +19,6 @@ client = discord.Client()
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
     await bot.change_presence(activity=discord.Game('vh!help'))
-
 
 @bot.event
 async def on_message(message):
@@ -66,9 +64,13 @@ async def on_message(message):
                 else:
                     absents.append(discord.utils.get(message.guild.members, name=name).name)
         #creates and sends the embed
+        absentstr = ''
+        for absent in absents:
+            absentstr += absent + '\n'
+
         if len(absents) != 0:
             embed = discord.Embed(title="Appel",colour=discord.Color.from_rgb(255,0,0))
-            embed.add_field(name=f"Absents : {len(absents)}", value=str(absents))
+            embed.add_field(name=f"Absents : {len(absents)}", value=absentstr)
         elif len(absents) == 0:
             embed = discord.Embed(title="Appel",colour=discord.Color.from_rgb(0,255,0))
             embed.add_field(name="Absents", value='Aucun')
