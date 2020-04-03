@@ -14,7 +14,7 @@ import signal
 
 
 #vars
-TOKEN = 'NjkyNDQyNzkyNTk2NjAyOTYw.Xn3ZHQ.wXIER0ICfgdUYoJqXEf4DSvflnA'
+TOKEN = token 
 bot = commands.Bot(command_prefix='!')
 client = discord.Client()
 boomers = ['Rémi Gouillardon']
