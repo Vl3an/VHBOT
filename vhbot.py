@@ -11,6 +11,7 @@ import re
 from vhconstants import *
 
 #vars
+
 bot = commands.Bot(command_prefix='!')
 client = discord.Client()
 
@@ -19,6 +20,7 @@ client = discord.Client()
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
     await bot.change_presence(activity=discord.Game('vh!help'))
+
 
 @bot.event
 async def on_message(message):
@@ -110,16 +112,6 @@ async def on_message(message):
 @bot.event
 async def on_member_update(before,after):
     pass
-
-@bot.command
-async def boomeradd(ctx):
-    name = str(ctx.message)[12:]
-    print(name)
-    if (not name in boomers):
-        boomers.append(name)
-    else:
-        boomers.remove(name)
-    await ctx.message.channel.send(str(boomers))
 
 @bot.event
 async def on_reaction_add(reaction,user):
